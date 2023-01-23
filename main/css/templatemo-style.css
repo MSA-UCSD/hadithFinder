@@ -217,14 +217,12 @@ button:focus { outline: none; }
 
 /* footer */
 .tm-social-link {
-	background-color: white;
-    color: black;
-    display: inline-block;
-    width: 46px;
-    height: 46px;
-    text-align: center;
-    padding-top: 10px;
-    margin-right: 10px;
+	padding: 20px;
+		font-size: 30px;
+		width: 30px;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 50%;
 }
 
 .tm-social-link:hover {
