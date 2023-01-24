@@ -217,7 +217,8 @@ button:focus { outline: none; }
 
 /* footer */
 .tm-social-link {
-	padding: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 		font-size: 30px;
 		width: 30px;
 		text-align: center;
@@ -225,10 +226,6 @@ button:focus { outline: none; }
 		border-radius: 50%;
 }
 
-.tm-social-link:hover {
-	background-color: black;
-	color: white;
-}
 
 .tm-social-link:last-child { margin-right: 0; }
 
@@ -245,7 +242,7 @@ button:focus { outline: none; }
     padding: 0 11px 12px;
 }
 
-.tm-social-icons-container { margin-bottom: 30px; }
+.tm-social-icons-container { padding-top:30px;margin-bottom: 30px; }
 .cd-hero-slider p:last-child { margin-bottom: 0; }
 
 /* Contact */
