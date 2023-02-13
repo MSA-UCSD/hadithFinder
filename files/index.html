@@ -22,7 +22,7 @@
 
 
     <link rel="icon" type="image/x-icon" style="object-fit: cover;" href="img/blueLogo.jpeg">
-
+    <script async src="https://api.countapi.xyz/hit/iaw2023.netlify.app/5f4bfb43-b35d-4977-ac05-f9d0d7de1d5c?callback=websiteVisits"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
 </head>
 
@@ -329,11 +329,11 @@
 
             </div>
             <center><a href="https://www.instagram.com/msaucsd/?hl=en"><img src="img/blueLogo.jpeg"
-                        style="width:80px;padding-bottom:20px;"></a></center>
+                        style="width:80px;padding-bottom:20px;"></a>
             <p class="tm-copyright-text">Copyright &copy; <span class="tm-copyright-year">current year</span> MSA UCSD
-
-
-            </p>
+                
+                <!-- <p class="tm-copyright-text" id="visits"> -->
+            </p></p></center>
 
 
         </footer>
@@ -422,6 +422,10 @@
             $(".tm-copyright-year").text(new Date().getFullYear());
 
         });
+
+        function websiteVisits(response) {
+    document.querySelector("#visits").textContent = response.value;
+}
 
     </script>
 
