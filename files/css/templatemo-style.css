@@ -737,6 +737,7 @@ figure.effect-sadie:hover p {
     transform: translateY(-2px); /* Moves the button up slightly on hover */
 }
 
+
 .buttonOk:active {
     background-color: #1b6ca8; /* Even darker shade when the button is clicked */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow to simulate the button being pressed */
