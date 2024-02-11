@@ -713,11 +713,32 @@ figure.effect-sadie:hover p {
 }
 
 
+
 .buttonOk {
-	transition-duration: 0.4s;
-  }
-  
-  .buttonOk:hover {
-	background-color: #97d3e7a6; 
-	color: white;
-  }
+    background-color: #3498db; /* Primary Button Color */
+    color: white;
+    padding: 12px 30px;
+	margin-top: 15px;
+    font-size: 1.6rem; /* Larger font size for better readability */
+    border: none; /* Removes the border */
+    border-radius: 25px; /* Rounded corners */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transitions for hover effects */
+    text-transform: uppercase; /* Makes the button text uppercase */
+    letter-spacing: 0.05rem; /* Adds spacing between letters */
+    cursor: pointer; /* Changes cursor to pointer to indicate it's clickable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    outline: none; /* Removes the outline to avoid the default browser focus style */
+    user-select: none; /* Prevents the text in the button from being selectable */
+}
+
+.buttonOk:hover, .buttonOk:focus {
+    background-color: #2980b9; /* Darker shade on hover for a nice effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover for a 'lifting' effect */
+    transform: translateY(-2px); /* Moves the button up slightly on hover */
+}
+
+.buttonOk:active {
+    background-color: #1b6ca8; /* Even darker shade when the button is clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow to simulate the button being pressed */
+    transform: translateY(1px); /* Moves the button down slightly to simulate being pressed */
+}
