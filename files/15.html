@@ -5,283 +5,226 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>HadithFindr- Patience</title>
+    <title>HadithFindr - Kindness</title>
+    
     <!-- load stylesheets -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
-    />
-    <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="Font-Awesome-4.7/css/font-awesome.min.css" />
-    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cairo:wght@300;400;600&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Bootstrap style -->
-    <link rel="stylesheet" href="css/hero-slider-style.css" />
-    <!-- Hero slider style (https://codyhouse.co/gem/hero-slider/) -->
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-    <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
-    <link rel="stylesheet" href="css/templatemo-style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Playfair+Display&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="icon"
-      type="image/x-icon"
-      style="object-fit: cover"
-      href="img/png.png"
-    />
+    <link rel="icon" type="image/x-icon" href="img/png.png" />
     <meta name="google" content="notranslate" />
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script>
-      var tm_gray_site = false;
-
-      if (tm_gray_site) {
-        $("html").addClass("gray");
-      } else {
-        $("html").removeClass("gray");
+    
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #34495e;
+        --accent-color: #3498db;
+        --text-color: #2c3e50;
+        --background-color: #f8f9fa;
       }
-    </script>
+
+      body {
+        font-family: 'Playfair Display', serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.8;
+      }
+
+      .main-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hadith-card {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        margin: 2rem auto;
+        max-width: 800px;
+      }
+
+      .hadith-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .arabic-text {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.8rem;
+        line-height: 2.5;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .translation-text {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        margin: 2rem 0;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .source-text {
+        font-style: italic;
+        color: var(--accent-color);
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      .action-button {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 2rem;
+      }
+
+      .action-button:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .navbar {
+        background: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem 2rem;
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        margin-top: auto;
+      }
+
+      .footer-logo {
+        width: 60px;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+      }
+
+      .footer-logo:hover {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 768px) {
+        .hadith-card {
+          padding: 2rem;
+          margin: 1rem;
+        }
+
+        .arabic-text {
+          font-size: 1.5rem;
+        }
+
+        .translation-text {
+          font-size: 1.1rem;
+        }
+      }
+
+      /* Loading animation */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        background: var(--background-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #loader {
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid var(--accent-color);
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .loaded #loader-wrapper {
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease-out;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- Content -->
-    <div class="cd-hero">
-      <!-- Navigation -->
-      <div class="cd-slider-nav">
-        <nav class="navbar">
-          <div class="tm-navbar-bg">
-            <a class="navbar-brand text-uppercase" href="index.html"
-              ><i class="fa fa-moon-o" aria-hidden="true"></i>&nbsp;IAW 2024</a
-            >
+    <nav class="navbar">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-moon"></i> IAW 2024
+      </a>
+    </nav>
 
-            <!-- <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
-                            &#9776; -->
-            <!-- </button> -->
-            <!-- <div class="collapse navbar-toggleable-md text-xs-center text-uppercase tm-navbar" id="tmNavbar">
-                            <ul class="nav navbar-nav">
-                                <li class="nav-item active selected">
-                                    <a class="nav-link" href="#0" data-no="1">1st fluid <span class="sr-only">(current)</span></a>
-                                </li>                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="2">2nd fluid</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="3">3rd fluid</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="4">Columns</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="5">Message</a>
-                                </li>
-                            </ul>
-                        </div>                         -->
-          </div>
-        </nav>
-      </div>
-
-      <ul class="cd-hero-slider">
-        <!-- Page 1 Gallery One -->
-        <li class="selected">
-          <div class="cd-full-width">
-            <div
-              class="container-fluid js-tm-page-content"
-              data-page-no="1"
-              data-page-type="gallery"
-            >
-              <div class="tm-img-gallery-container">
-                <center>
-                  <div
-                    class="tm-img-gallery gallery-one"
-                    style="width: 90%; padding-top: 100px"
-                  >
-                    <div style="padding-bottom: 50px">
-                      <p
-                        lang="ar"
-                        style="
-                          font-size: larger;
-                          font-family: 'Cairo', sans-serif;
-                          font-family: 'Playfair Display', serif;
-                        "
-                      >
-                        مَا أُعْطِيَ أَحَدٌ عَطَاءً خَيْرًا وَأَوْسَعَ مِنْ
-                        الصَّبْرِ
-                      </p>
-                    </div>
-
-                    <p style="font-weight: 700; font-size: medium">
-                      There is no gift that is better and more comprehensive
-                      than patience.
-                    </p>
-
-                    <h1 style="padding-top: 10px">(Bukhari)</h1>
-                  </div>
-
-                  <div style="padding-top: 10px">
-                    <a href="index.html"
-                      ><button class="buttonOk buttonOk">
-                        More Hadiths!
-                      </button></a
-                    >
-                  </div>
-                </center>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <!-- .cd-hero-slider -->
-
-      <footer class="tm-footer">
-        <div class="tm-social-icons-container text-xs-center">
-          <!-- <a
-            href="https://www.instagram.com/msaucsd/?hl=en"
-            target="_blank"
-            class="tm-social-link"
-            ><i class="fa fa-instagram"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/groups/msaucsd"
-            target="_blank"
-            class="tm-social-link"
-            ><i class="fa fa-facebook"></i
-          ></a> -->
+    <div class="main-container">
+      <div class="hadith-card">
+        <div class="arabic-text" lang="ar">
+          مَنْ أَحَبَّ لِلَّهِ وَأَبْغَضَ لِلَّهِ وَأَعْطَى لِلَّهِ وَمَنَعَ لِلَّهِ فَقَدِ اسْتَكْمَلَ الإِيمَانَ
         </div>
+
+        <div class="translation-text">
+          Whoever loves for Allah's sake and hates for Allah's sake, gives for Allah's sake and withholds for Allah's sake, has perfected his faith.
+        </div>
+
+        <div class="source-text">
+          (Abu Dawud)
+        </div>
+
         <center>
-          <a href="index.html"
-            ><img src="img/png.png" style="width: 75px; padding-bottom: 20px"
-          /></a>
+          <a href="index.html" class="action-button">
+            More Hadiths
+          </a>
         </center>
-        <p class="tm-copyright-text">
-          Copyright &copy;
-          <span class="tm-copyright-year">current year</span> MSA UCSD
-        </p>
-      </footer>
+      </div>
     </div>
-    <!-- .cd-hero -->
+
+    <footer>
+      <a href="index.html">
+        <img src="img/png.png" class="footer-logo" alt="Logo" />
+      </a>
+      <p class="copyright-text">
+        Copyright &copy; <span class="tm-copyright-year">2024</span> MSA UCSD
+      </p>
+    </footer>
 
     <div id="loader-wrapper">
       <div id="loader"></div>
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
     </div>
 
-    <!-- load JS files -->
-
-    <script src="js/tether.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/hero-slider-main.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-
+    <!-- Scripts -->
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script>
-      function adjustHeightOfPage(pageNo) {
-        var pageContentHeight = 0;
-
-        var pageType = $('div[data-page-no="' + pageNo + '"]').data(
-          "page-type"
-        );
-
-        if (pageType != undefined && pageType == "gallery") {
-          pageContentHeight = $(
-            ".cd-hero-slider li:nth-of-type(" +
-              pageNo +
-              ") .tm-img-gallery-container"
-          ).height();
-        } else {
-          pageContentHeight =
-            $(
-              ".cd-hero-slider li:nth-of-type(" +
-                pageNo +
-                ") .js-tm-page-content"
-            ).height() + 20;
-        }
-
-        // Get the page height
-        var totalPageHeight =
-          $(".cd-slider-nav").height() +
-          pageContentHeight +
-          $(".tm-footer").outerHeight();
-
-        // Adjust layout based on page height and window height
-        if (totalPageHeight > $(window).height()) {
-          $(".cd-hero-slider").addClass("small-screen");
-          $(".cd-hero-slider li:nth-of-type(" + pageNo + ")").css(
-            "min-height",
-            totalPageHeight + "px"
-          );
-        } else {
-          $(".cd-hero-slider").removeClass("small-screen");
-          $(".cd-hero-slider li:nth-of-type(" + pageNo + ")").css(
-            "min-height",
-            "100%"
-          );
-        }
-      }
-
-      /*
-            Everything is loaded including images.
-        */
-      $(window).load(function () {
-        adjustHeightOfPage(1); // Adjust page height
-
-        /* Gallery One pop up
-            -----------------------------------------*/
-        $(".gallery-one").magnificPopup({
-          delegate: "a", // child items selector, by clicking on it popup will open
-          type: "image",
-          gallery: { enabled: true },
-        });
-
-        /* Gallery Two pop up
-            -----------------------------------------*/
-        $(".gallery-two").magnificPopup({
-          delegate: "a",
-          type: "image",
-          gallery: { enabled: true },
-        });
-
-        /* Gallery Three pop up
-            -----------------------------------------*/
-        $(".gallery-three").magnificPopup({
-          delegate: "a",
-          type: "image",
-          gallery: { enabled: true },
-        });
-
-        /* Collapse menu after click 
-            -----------------------------------------*/
-        $("#tmNavbar a").click(function () {
-          $("#tmNavbar").collapse("hide");
-
-          adjustHeightOfPage($(this).data("no")); // Adjust page height
-        });
-
-        /* Browser resized 
-            -----------------------------------------*/
-        $(window).resize(function () {
-          var currentPageNo = $(
-            ".cd-hero-slider li.selected .js-tm-page-content"
-          ).data("page-no");
-
-          // wait 3 seconds
-          setTimeout(function () {
-            adjustHeightOfPage(currentPageNo);
-          }, 1000);
-        });
-
-        // Remove preloader (https://ihatetomatoes.net/create-custom-preloading-screen/)
-        $("body").addClass("loaded");
-
-        // Write current year in copyright text.
-        $(".tm-copyright-year").text(new Date().getFullYear());
+      $(window).on('load', function() {
+        $('body').addClass('loaded');
+        $('.tm-copyright-year').text(new Date().getFullYear());
       });
     </script>
   </body>
